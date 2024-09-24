@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="/scripts/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="/scripts/fadetransition.js"></script>
+    <link rel="stylesheet" href="/css/loader.css">
+    <link rel="stylesheet" href="/css/list_of_student.css">
+    <title>Admin | List of Student</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logoContainer">
+                    <img src="/images/cec.png" alt="" class="logo">
+                    <p class="title">Cebu Eastern College
+                    <p>
+                </div>
+                <!-- admin profile -->
+                <button class="button-profile" id="button-profile"><img src="/images/profile.png" alt=""
+                        class="profile">ADMIN<img src="/images/caretdown.png" alt="" class="caretdown"></button>
+                <div class="adminProfile" id="adminProfile">
+                    <a href="">Settings</a>
+                    <a href="login.html">Signout</a>
+                </div>
+
+                <div class="menu-navbar">
+                    <div class="dropdown">
+                        <button class="dropdown-btn"><img src="/images/dashboard.png" alt=""
+                                class="dashboard-icon">Dashboard<img src="/images/caretright.png" alt=""
+                                class="caretright"></button>
+                        <div class="dropdown-dashboard">
+                            <a href="adminpage.html">Dashboard</a>
+                            <a href="">Total of Counter</a>
+                            <a href="">Total of Students</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn"><img src="/images/counter.png" alt=""
+                                class="counter-icon">Counter<img src="/images/caretright.png" alt=""
+                                class="caretright"></button>
+                        <div class="dropdown-dashboard">
+                            <a href="">Add Counter</a>
+                            <a href="list_of_counter.html">List of Counter</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn"><img src="/images/users.png" alt="" class="users-icon">Users<img
+                                src="/images/caretright.png" alt="" class="caretright"></button>
+                        <div class="dropdown-dashboard">
+                            <a href="">Add Student</a>
+                            <a href="">Add Staff</a>
+                            <a href="list_of_student.html">List of Student</a>
+                            <a href="list_of_staff.html">List of Staff</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn"><img src="/images/entertainment.png" alt=""
+                                class="entertainment-icon">Entertainment<img src="/images/caretright.png" alt=""
+                                class="caretright"></button>
+                        <div class="dropdown-dashboard">
+                            <a href="">Video advertisement</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-btn"><img src="/images/display.png" alt=""
+                                class="display-icon">Display<img src="/images/caretright.png" alt=""
+                                class="caretright"></button>
+                        <div class="dropdown-dashboard">
+                            <a href="/user/userinquiry.html">User Inquiry</a>
+                            <a href="">User Window</a>
+                            <a href="/staff/counter_window.html">Counter Window</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="studentlist-section">
+                <div class="studentlist-content">
+                    <h1>Student List</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Options</th> <!-- Added Options Header -->
+                            </tr>
+                        </thead>
+                        <tbody id="tablelist">
+                            <tr>
+                                <td>Loading...</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <script>
+                var dropdown = document.getElementsByClassName("button-profile");
+                var i;
+
+                for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function () {
+
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                            dropdownContent.style.display = "none";
+                        } else {
+                            dropdownContent.style.display = "block";
+                        }
+                    });
+                }
+
+                var staffListInfo = document.getElementById("tablelist");
+
+                function updateData() {
+                    var request = new XMLHttpRequest();
+                    request.open('GET', 'http://localhost:8080/smartqueueweb/JsonStudentListAPI');
+                    request.onload = function () {
+                        var data = JSON.parse(request.responseText);
+                        renderHTML(data);
+                    }
+                    request.send();
+                }
+
+                function renderHTML(data) {
+                    var htmlString = ``;
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        htmlString += "<tr>";
+                        htmlString += "<td>" + data[i].idnumber + "</td>";
+                        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
+                        htmlString += "<td>" + data[i].course + "</td>";
+                        htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+                        htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+                        htmlString += "</tr>";
+                    }
+
+                    staffListInfo.innerHTML = htmlString;
+                }
+
+                setInterval(updateData, 2000);
+
+
+            </script>
+
+            <div class="load-wrapper">
+                <div class="main-loader">
+                    <div class="box-loader">
+                    </div>
+                </div>
+            </div>
+
+    </body>
+
+</html>
