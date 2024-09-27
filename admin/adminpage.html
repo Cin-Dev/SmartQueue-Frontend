@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
 		<c:if test="${empty sessionScope.sessionAdmin.getUsername()}">
 			<c:redirect url="/" />
 		</c:if>
@@ -80,7 +80,7 @@
 									class="display-icon">Display<img src="/images/caretright.png" alt=""
 									class="caretright"></button>
 							<div class="dropdown-dashboard">
-								<a href="">User Inquiry</a>
+								<a href="/user/userinquiry.html">User Inquiry</a>
 								<a href="">User Window</a>
 								<a href="">Counter Window</a>
 							</div>
