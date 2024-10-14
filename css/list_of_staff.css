@@ -3,10 +3,25 @@
 			:root {
 				--primary-color: #1e91d0;
 				--secondary-color: #00509d;
+				--darkblue: #2D59B2;
 				--body-fonts: Arial, Helvetica black;
 				--background-color: #F6F4EB;
 				--select-text-color: #B4B4B8;
 				--text-color: #272829;
+			}
+
+			/* custom scroll bar */
+			html::-webkit-scrollbar {
+				width: .8rem;
+			}
+
+			html::-webkit-scrollbar-track {
+				background: transparent;
+			}
+
+			html::-webkit-scrollbar-thumb {
+				background-color: var(--darkblue);
+				border-radius: 5rem;
 			}
 
 			body {
@@ -19,31 +34,24 @@
 
 			.container {
 				width: 100%;
-				height: 100%;
+				height: auto;
 				background-color: white;
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 				align-items: center;
 				justify-content: center;
-
-			}
-
-			.main {
-				width: 100vw;
-				height: 100vh;
-				background-color: var(--background-color);
-				display: flex;
+				overflow: hidden;
 			}
 
 			.navbar {
 				width: 15vw;
 				height: 100vh;
-				background-color: var(--primary-color);
+				background-image: linear-gradient(90deg, #1e91d0 15%, #1477d4fb 100%);
 				position: fixed;
 				justify-content: center;
 				align-items: center;
 				left: 0;
-
+				float: left;
 			}
 
 			.logoContainer {
@@ -63,37 +71,19 @@
 				font-size: 0.8em;
 			}
 
-			.adminProfile {
-				margin-left: 2.5rem;
-				position: absolute;
-				background-color: var(--background-color);
-				width: 9.5vw;
-				align-items: center;
-				justify-content: center;
-				text-align: center;
-				z-index: 1;
-				display: none;
+			.bell-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-top: 2.5%;
+				margin-left: 67%;
+				cursor: pointer;
 			}
 
-			.adminProfile a,
-			.dropdown-dashboard a {
-				text-decoration: none;
-				color: var(--background-color);
-				overflow: hidden;
-				color: black;
-				width: 9.5vw;
-				height: 20%;
-				text-align: center;
-				align-items: center;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding: .5rem 0 0 0;
-				height: 2rem;
-			}
-
-			.adminProfile a:hover {
-				background-color: var(--select-text-color);
+			.chat-icon {
+				object-fit: scale-down;
+				width: 20px;
+				margin-left: 2%;
+				cursor: pointer;
 			}
 
 			.button-profile {
@@ -101,13 +91,15 @@
 				justify-content: center;
 				display: flex;
 				width: 10vw;
-				margin-top: 30px;
-				margin-left: 36px;
+				margin-top: -3%;
+				margin-left: 84%;
 				border-radius: 10px;
 				padding: 15px 10px 15px 10px;
 				/*tlbr*/
 				overflow: hidden;
 				cursor: pointer;
+				border: none;
+				background: none;
 			}
 
 			.profile {
@@ -122,11 +114,52 @@
 				margin-left: 20px;
 			}
 
+			.adminProfile {
+				margin-left: 84%;
+				position: absolute;
+				background-color: white;
+				width: 10vw;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				z-index: 1;
+				display: none;
+				border-radius: 7px;
+			}
+
+			.adminProfile a {
+				text-decoration: none;
+				color: var(--text-color);
+				overflow: hidden;
+				width: 10vw;
+				height: 20%;
+				text-align: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: .5rem 0 0 0;
+				height: 2rem;
+			}
+
+			.adminProfile a:hover {
+				background-color: var(--select-text-color);
+				border-radius: 7px;
+			}
+
 			/* navbar */
+			.navbar {
+				position: fixed;
+				z-index: 1;
+				top: 0;
+				left: 0;
+			}
+
 			.menu-navbar {
 				margin-top: 2rem;
 				display: flex;
 				flex-direction: column;
+				position: fixed;
 			}
 
 			.dropdown {
@@ -140,7 +173,7 @@
 				background-color: var(--background-color);
 				min-width: 160px;
 				top: 100%;
-				left: 80%;
+				left: 60%;
 				z-index: 1;
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 				border-radius: 4px;
@@ -219,13 +252,21 @@
 
 			.stafflist-section {
 				width: 85vw;
-				height: 100vh;
 				background-color: var(--background-color);
 				float: right;
-				margin-left: 30%;
+				margin-left: 15%;
 				align-items: center;
 				display: flex;
 				justify-content: center;
+				height: 100vh;
+			}
+
+			.dashboard-head {
+				width: 85vw;
+				height: 10%;
+				background-color: #1477d4fb;
+				position: fixed;
+				margin-top: -43.2%;
 			}
 
 			.title-page {
@@ -243,6 +284,7 @@
 
 			table {
 				width: 100%;
+				height: auto;
 				border-collapse: separate;
 				border-spacing: 0;
 				border-radius: 10px;
@@ -253,13 +295,16 @@
 			thead {
 				background-color: #3498db;
 				color: #ffffff;
+				width: 20%;
+
 			}
 
 			th {
-				padding: 12px 15px;
+				padding: 12px 5px;
 				text-align: left;
 				font-size: 16px;
 				font-weight: 600;
+
 				border-bottom: 3px solid #2980b9;
 			}
 
@@ -368,6 +413,7 @@
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 				overflow: hidden;
 				padding: 20px;
+				margin-top: -23%;
 			}
 
 			.add-account-icon {
@@ -414,127 +460,141 @@
 				background: none;
 				margin-bottom: -10%;
 			}
+
 			.fillup-form-container {
-            width: 40%;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            position: absolute;
-			z-index: 1;
-            display: none;
-			align-items: center;
-        }
+				width: 40%;
+				background-color: white;
+				padding: 20px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				border-radius: 10px;
+				margin-left: 10%;
+				position: absolute;
+				z-index: 1;
+				display: none;
+				align-items: center;
+			}
 
-        .modal.active {
-            display: block;
-        }
+			.fillup-form-container h1 {
+				margin-top: 2%;
+			}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+			.modal.active {
+				display: block;
+			}
 
-        .close-btn {
-            font-size: 2rem;
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-        }
+			h1 {
+				text-align: center;
+				margin-bottom: 20px;
+			}
 
-        form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+			.close-btn {
+				font-size: 2rem;
+				position: absolute;
+				right: 20px;
+				top: 10px;
+				cursor: pointer;
 
-        .input-container {
-            position: relative;
-            width: 48%;
-        }
+			}
 
-        .input-container input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 15px;
-            border: none;
-            outline: 2px solid var(--primary-color);
-            background-color: transparent;
-            transition: outline-color 500ms;
-        }
+			form {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
 
-        .input-container input:focus {
-            outline-color: var(--secondary-color);
-        }
+			.input-container {
+				position: relative;
+				width: 48%;
 
-        .input-container label {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            color: var(--text-color);
-            transition: 0.3s ease;
-            background-color: white;
-            padding-inline: 5px;
-        }
+			}
 
-        .input-container input:focus+label,
-        .input-container input:valid+label {
-            top: -10px;
-            transform: translateY(0);
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
+			.input-container input {
+				width: 100%;
+				padding: 10px;
+				border-radius: 5px;
+				font-size: 15px;
 
-        .full-width {
-            width: 100%;
-        }
+				border: none;
+				outline: 2px solid var(--primary-color);
+				background-color: transparent;
+				transition: outline-color 500ms;
+			}
 
-        .sign-btn {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 300ms;
-        }
+			.input-container input:focus {
+				outline-color: var(--secondary-color);
+			}
 
-        .sign-btn:hover {
-            background-color: var(--secondary-color);
-        }
+			.input-container label {
+				position: absolute;
+				top: 50%;
+				left: 10px;
+				transform: translateY(-50%);
+				color: var(--text-color);
+				transition: 0.3s ease;
+				background-color: white;
+				padding-inline: 5px;
+			}
 
-        .add-account {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 300ms;
-        }
+			.input-container input:focus+label,
+			.input-container input:valid+label {
+				top: -10px;
+				transform: translateY(0);
+				font-size: 0.8rem;
+				color: var(--secondary-color);
+			}
 
-        .add-account:hover {
-            background-color: var(--secondary-color);
-        }
+			.full-width {
+				width: 100%;
+			}
 
-        /* Overlay for background when modal is active */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+			.sign-btn {
+				width: 95%;
+				padding: 10px;
+				background-color: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: 5px;
+				margin-left: 3.5%;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 300ms;
+			}
 
-        .overlay.active {
-            display: block;
-        }
+			.sign-btn:hover {
+				background-color: var(--secondary-color);
+			}
+
+			.add-account {
+				padding: 10px 20px;
+				background-color: var(--primary-color);
+				color: white;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				transition: background-color 300ms;
+			}
+
+			.add-account:hover {
+				background-color: var(--secondary-color);
+			}
+
+			/* Overlay for background when modal is active */
+			.overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 1;
+			}
+
+			.overlay.active {
+				display: block;
+			}
+
+			.register-form {
+				margin-top: 7%;
+			}

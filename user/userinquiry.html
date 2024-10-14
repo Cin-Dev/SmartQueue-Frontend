@@ -324,7 +324,7 @@
     <div class="container">
         <div class="header">
             <p>.</p>
-            <img src="../images/logo.png" class="logo">
+            <img src="./images/logo.png" class="logo">
             <div class="head">
                 <h2 class="name">宿务东方学院</h2>
                 <h1 class="title">CEBU EASTERN COLLEGE, INC.</h1>
@@ -376,16 +376,24 @@
             <h2>General Inquiry Form</h2>
             <div class="form">
                 <label for="studentName">Student Name</label>
-                <input type="text" class="student-name" id="general-student-name" disabled>
+                <input type="text" class="student-name" id="general-student-name">
                 <label for="studentIdNo">Student ID No.</label>
                 <input type="text" class="student-id" id="general-student-id">
                 <label for="yearLevel">Year Level</label>
                 <input type="text" class="yearLevel" id="yearLevel">
+                <label for="options">Program</label>
+                <select name="program" id="program" class="program">
+                    <option value="">--</option>
+                    <option value="BEED">BEED</option>
+                    <option value="BSED">BSED</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="BSTM">BSTM</option>
+                    <option value="BSHM">BSHM</option>
+                </select>
                 <label for="options">Option</label>
                 <select name="purpose" id="general-purpose" class="purpose">
                     <option value="">--</option>
                     <option value="enrollment">Enrollment</option>
-                    <option value="assesment">Assesment</option>
                 </select>
             </div>
             <input type="button" class="printbutton" value="Print" onclick="printQueue('General')">
@@ -454,17 +462,16 @@
             <div id="receiptContainer">
                 <div id="printArea">
                     <h1 style="color: #00509d;">CEBU EASTERN COLLEGE</h1>
-                    <h2 style="color: #00296b;" id="serviceNamePrint">Service Name</h2>
+                    <h2 style="color: #00296b;" id="serviceNamePrint">Service:</h2>
                     <h3>Your Queue Number is:</h3>
                     <h1 id="queueNumberPrint" style="font-size: 60px; color: #d9534f;">###</h1>
-                    <p id="queueDetails"></p>
+                    <p id="queueDetails">Name:</p>
                     <p id="queueDateTime"></p>
                 </div>
             </div>
         </div>
     </div>
 
-</body>
 
 
 </body>
