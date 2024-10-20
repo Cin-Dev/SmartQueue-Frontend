@@ -130,3 +130,15 @@ var dropdown = document.getElementsByClassName("button-profile");
 						}
 					}
 				});
+
+				
+				// Show Modal
+				function showModal(title) {
+					document.getElementById('modal-title').textContent = title;
+					document.getElementById('modal').style.display = 'flex';
+				}
+
+				// Hide Modal
+				function hideModal() {
+					document.getElementById('modal').style.display = 'none';
+				}
