@@ -1,16 +1,17 @@
-* {
-    margin: 0%;
+@import url('./css/fonts.css');
+ * {
+     margin: 0%;
     padding: 0%;
-    font-family: arial black;
+    font-family: "Roboto Condensed", sans-serif;
     overflow: hidden;
 }
-
 .container {
     margin: 0%;
     padding: 0%;
     width: 100vw;
     height: 100vh;
     background-color: #fff;
+    overflow: hidden;
 }
 
 .header {
@@ -105,7 +106,7 @@
 }
 
 .card p {
-    font-size: 1.2rem;
+    font-size: .7rem;
 }
 
 .card h2 {
@@ -117,7 +118,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -125,16 +126,22 @@
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+
 }
 
 .modal-content {
+    /* background-color: #1e91d0; */
     background-color: #fff;
+    background: rgb(72.5%, 85.5%, 95.7%);
     padding: 20px;
     border-radius: 10px;
     width: 80%;
-    max-width: 500px;
+    max-width: 600px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 30%;
+    margin-top: 5%;
 }
+
 
 .close {
     color: #aaa;
@@ -173,33 +180,96 @@ label {
 .student-id,
 .student-name,
 #yearLevel,
-.purpose {
+.purpose,
+.program,
+.first-name,
+.middle-name,
+.last-name {
     height: 5vh;
-    width: 40%;
+    width: 60%;
+    text-indent: 10px;
+    text-transform: uppercase;
 }
 
-.modal-content {
-    height: 80vh;
-    width: 100%;
-    background-color: #1e91d0;
-    background: rgb(72.5%, 85.5%, 95.7%);
+.generalfirst-name,
+.generalmiddle-name,
+.generallast-name {
+    height: 5vh;
+    width: 35%;
+    text-indent: 10px;
+    text-transform: uppercase;
+    margin-top: 5%;
+}
+
+.student-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.firstname-label,
+.middlename-label {
+    margin-top: .4%;
+    position: absolute;
+}
+
+.lastname-label {
+    margin-top: 4.7%;
+    margin-left: -25.5%;
+    position: absolute;
+}
+
+
+@media print {
+
+    /* Set the size for 58mm wide thermal printer */
+    body,
+    html {
+        width: 58mm;
+        margin: 0;
+        padding: 0;
+    }
+    
+    
 }
 
 #printArea {
-    display: none;
-    text-align: center;
-    padding: 20px;
+    width: 300px;
+    /* Small width for the receipt */
+    padding: 10px;
     border: 1px solid #000;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #fff;
+    display: block;
 }
+
+#printArea h3,
+#printArea h4 {
+    margin: 5px 0;
+}
+
+#printArea p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#printArea #queueNumberPrint {
+    font-size: 24px;
+    /* Emphasize the queue number */
+    color: #d9534f;
+}
+
 
 
 .slidetext {
     display: inline-block;
-    width: 100%;
+    width: 120%;
     white-space: nowrap;
     animation: slide 20s linear infinite;
     margin: 0 24px;
     position: absolute;
+    font-size: 24px;
+    color: red;
 }
 
 @keyframes slide {
@@ -219,7 +289,10 @@ label {
         height: auto;
     }
 
-    .name {
+    .name,
+    .first-name,
+    .middle-name,
+    .last-name {
         letter-spacing: 40px;
         font-size: 20px;
     }
@@ -253,7 +326,10 @@ label {
         width: 25vw;
     }
 
-    .name {
+    .name,
+    .first-name,
+    .middle-name,
+    .last-name {
         letter-spacing: 20px;
         font-size: 15px;
     }

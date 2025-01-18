@@ -8,57 +8,64 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script>
 			<script type="text/javascript" src="scripts/fadetransition.js"></script>
+			<script type="text/javascript" src="scripts/jquery-confirm.min.js"></script>
+			<link rel="stylesheet" href="./css/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="css/jquery-confirm.min.css" />
 			<link rel="stylesheet" href="css/loginstyle.css">
 			<link rel="stylesheet" href="css/loader.css">
-			<title>login page</title>
+			<link rel="stylesheet" href="scripts/login.js">
+			<title>Login</title>
 		</head>
 
 		<body>
 
-			<div class="bg-container">
+			<div class="container-fluid">
 				<div class="login-container">
-					<div class="image-container"></div>
+					<img src="./images/image.png" class="cecbldg" alt="">
+					<img src="./images/logo.png" class="logo" alt="">
+					<h1 class="school-name">Cebu Eastern College</h1>
+					<p class="system-title">Optimizing School Records Management System</p>
 					<div class="loginform-container">
+
 						<div class="title-container">
 							<label class="title" for="title">login</label>
 						</div>
 						<div class="form-container">
 							<form action=dashboard method=post>
 								<div class="username-container">
-								<input class="username-input"
-									required="required" type="text" name="txtUsername">	
+									<input class="username-input" required="required" type="text" name="txtUsername">
 									<label for="username" class="username-label">Username</label>
 								</div>
-								
+
 								<br>
 								<div class="password-container">
 									<input class="password-input" required="required" type="password"
-									name="txtPassword">
+										name="txtPassword">
 									<label for="password" class="password-label">Password</label>
 								</div>
-								
-								<p class="error-message"><c:out value="${errorLogin}"></c:out>
+
+								<p class="error-message">
+									<c:out value="${errorLogin}"></c:out>
 								</p>
-								<br> <a href="forgotpass" class="forgotpass">Forgot password?</a>
-								<br> <input class="login-btn" type="submit" value="Log in">
+								<br> <a id="forgotpass" class="forgotpass">Request a new password.</a>
+								<br> <input id="login-button" class="login-btn" type="submit" value="Log in">
 							</form>
+
 						</div>
-						
+
 						<!-- <button class="signup-btn" type="button" value="signup-btn" onclick="document.location='signup.jsp'">Sign
 							Up</button> -->
-						<hr class="hr-left">
+						<!-- <hr class="hr-left">
 						<p>or</p>
 						<hr class="hr-right">
 						
-						<button class="userinquiry-btn" type="button" value="userinquiry-btn" onclick="document.location='user/userinquiry.jsp'">User Inquiry</button>
+						<button class="userinquiry-btn" type="button" value="userinquiry-btn" onclick="document.location='user/userinquiry.jsp'">User Inquiry</button> -->
 
 						<!-- <button class="userinquiry-btn" type="button" value="userinquiry-btn">User Inquiry</button> -->
 					</div>
 
 				</div>
 			</div>
-
-
 
 			<!-- loader please do not remove -->
 			<div class="load-wrapper">
