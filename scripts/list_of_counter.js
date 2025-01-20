@@ -53,9 +53,10 @@ for (i = 0; i < dropdown.length; i++) {
 
 var staffListInfo = document.getElementById("tablelist");
 
+//need to update this function
 function updateData() {
     var request = new XMLHttpRequest();
-    request.open('GET', '/smartqueueweb/JsonStudentListAPI');
+    request.open('GET', '/JsonStudentListAPI');
     request.onload = function () {
         var data = JSON.parse(request.responseText);
         renderHTML(data);
@@ -63,21 +64,30 @@ function updateData() {
     request.send();
 }
 
+//What is this function?
 function renderHTML(data) {
-    var htmlString = ``;
+    // var htmlString = ``;
 
-    for (var i = 0; i < data.length; i++) {
+    // for (var i = 0; i < data.length; i++) {
 
-        htmlString += "<tr>";
-        htmlString += "<td>" + data[i].idnumber + "</td>";
-        htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
-        htmlString += "<td>" + data[i].course + "</td>";
-        htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
-        htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
-        htmlString += "</tr>";
-    }
+    //     htmlString += "<tr>";
+    //     htmlString += "<td>" + data[i].idnumber + "</td>";
+    //     htmlString += "<td>" + data[i].firstname + " " + data[i].middlename + " " + data[i].lastname + " </td>";
+    //     htmlString += "<td>" + data[i].course + "</td>";
+    //     htmlString += '<td><a href="update?staffId=' + data[i].staffID + '"><button class="update" style="background-color: #97BE5A;">Update</button></a> ';
+    //     htmlString += '<a href="delete?staffId=' + data[i].staffID + '"><button class="delete" style="background-color: #EE4E4E;">Delete</button></a>';
+    //     htmlString += "</tr>";
+    // }
 
-    staffListInfo.innerHTML = htmlString;
+    //     staffListInfo.innerHTML = htmlString;
+
 }
 
-setInterval(updateData, 2000);
+setInterval(updateData, 10000);
+
+
+//button-profile being active btn
+document.getElementById('button-profile').addEventListener('click', function () {
+    this.classList.toggle('active');
+    document.getElementById('adminProfile').classList.toggle('show');
+});
